@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">TicTacToe</string>
+    <string name="playerStarts">Player starts</string>
+    <string name="androidStarts">Android starts</string>
+    <string name="quit">Quit the game</string>
 </resources>
