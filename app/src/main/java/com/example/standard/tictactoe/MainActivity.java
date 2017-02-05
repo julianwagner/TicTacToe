@@ -2,9 +2,10 @@ package com.example.standard.tictactoe;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TicTacToeView ticTacToeView;
 
     @Override
@@ -16,5 +17,10 @@ public class MainActivity extends AppCompatActivity {
         ticTacToeView = new TicTacToeView(this);
         LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayout0);
         layout.addView(ticTacToeView);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
