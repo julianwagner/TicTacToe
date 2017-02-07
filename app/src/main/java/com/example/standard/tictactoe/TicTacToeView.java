@@ -11,7 +11,7 @@ import android.view.View;
 
 public class TicTacToeView extends View {
     private Board board;
-    private Paint linePaint;
+    private Paint linePaint, iconPaint;
     private int cellSize, distance;
     private Bitmap androidIcon, playerIcon;
 
@@ -24,6 +24,8 @@ public class TicTacToeView extends View {
         playerIcon = BitmapFactory.decodeResource(getResources(), R.drawable.player_icon);
 
         board = Board.getInstance();
+
+        iconPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
         linePaint = new Paint();
         linePaint.setColor(Color.RED);
