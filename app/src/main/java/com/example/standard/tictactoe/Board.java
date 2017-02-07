@@ -19,17 +19,18 @@ public class Board {
         return false;
     }
 
-    public void makeMoveAndroid() {
+    public boolean makeMoveAndroid() {
         if (nextPlayer == -1) {
             for (int i = 0; i < board.length; i++) {
                 for (int j = 0; j < board.length; j++) {
                     if (board[i][j] == 0) {
                         board[i][j] = -1;
-                        return;
+                        return true;
                     }
                 }
             }
         }
+        return false;
     }
 
     public static Board getInstance() {
