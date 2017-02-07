@@ -24,12 +24,13 @@ public class TicTacToeView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        final int distance = canvas.getHeight() - canvas.getWidth();
         final int width = canvas.getWidth() / 3;
-        final int height = canvas.getHeight() / 3;
+        final int height = (canvas.getHeight() - distance) / 3;
 
         for (int i = 1; i <= 2; i++) {
             canvas.drawLine(0, height * i, getWidth(), height * i, linePaint);
-            canvas.drawLine(width * i, 0, width * i, getHeight(), linePaint);
+            canvas.drawLine(width * i, 0, width * i, getHeight() - distance, linePaint);
         }
     }
 }
