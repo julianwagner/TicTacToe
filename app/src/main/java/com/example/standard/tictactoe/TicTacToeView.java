@@ -121,9 +121,9 @@ public class TicTacToeView extends View {
 
     public void startWithPlayer(boolean playerStarts) {
         if (playerStarts) {
-            board.setNextPlayer(1);
+            board.setNextPlayer(playerStarts);
         } else {
-            board.setNextPlayer(-1);
+            board.setNextPlayer(playerStarts);
             board.makeMoveAndroid();
         }
         invalidate();

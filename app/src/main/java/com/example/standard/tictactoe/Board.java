@@ -80,8 +80,12 @@ public class Board {
         return winPosition;
     }
 
-    public void setNextPlayer(int nextPlayer) {
-        this.nextPlayer = nextPlayer;
+    public void setNextPlayer(boolean playerStarts) {
+        if (playerStarts) {
+            nextPlayer = 1;
+        } else {
+            nextPlayer = -1;
+        }
         this.board = new int[9];
     }
 }
