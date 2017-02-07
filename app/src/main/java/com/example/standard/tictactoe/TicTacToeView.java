@@ -71,4 +71,12 @@ public class TicTacToeView extends View {
         }
         return super.onTouchEvent(event);
     }
+
+    public void startWithPlayer(boolean playerStarts) {
+        if (playerStarts) {
+            board.setNextPlayer(1);
+        } else {
+            board.setNextPlayer(-1);
+        }
+    }
 }
