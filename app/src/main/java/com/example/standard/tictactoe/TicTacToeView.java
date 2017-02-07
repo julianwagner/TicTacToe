@@ -39,6 +39,20 @@ public class TicTacToeView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            int xCell = (int) (event.getX() / cellSize);
+            int yCell = (int) (event.getY());
+            if (yCell <= cellSize) {
+                yCell = 0;
+            } else if (yCell <= cellSize * 2) {
+                yCell = 1;
+            } else if (yCell <= cellSize * 3) {
+                yCell = 2;
+            } else {
+                return true;
+            }
+            return true;
+        }
         return super.onTouchEvent(event);
     }
 }
