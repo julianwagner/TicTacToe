@@ -35,7 +35,7 @@ public class TicTacToeView extends View {
 
         winPaint = new Paint();
         winPaint.setColor(Color.YELLOW);
-        winPaint.setStrokeWidth(5);
+        winPaint.setStrokeWidth(10);
         winPaint.setStyle(Paint.Style.STROKE);
     }
 
@@ -64,6 +64,26 @@ public class TicTacToeView extends View {
                     int iconSize = androidIcon.getWidth() / 2;
                     canvas.drawBitmap(androidIcon, xPosition - iconSize, yPosition - iconSize, iconPaint);
                 }
+            }
+        }
+        //winning line
+        if (board.gameOver() != 0) {
+            if (board.getWinPosition() == 0) {
+                canvas.drawLine(cellSize / 2, 0, cellSize / 2, getHeight() - distance, winPaint);
+            } else if (board.getWinPosition() == 1) {
+                canvas.drawLine(cellSize / 2 + cellSize, 0, cellSize / 2 + cellSize, getHeight() - distance, winPaint);
+            } else if (board.getWinPosition() == 2) {
+                canvas.drawLine(cellSize / 2 + cellSize * 2, 0, cellSize / 2 + cellSize * 2, getHeight() - distance, winPaint);
+            } else if (board.getWinPosition() == 3) {
+                canvas.drawLine(0, cellSize / 2, getWidth(), cellSize / 2, winPaint);
+            } else if (board.getWinPosition() == 4) {
+                canvas.drawLine(0, cellSize / 2 + cellSize, getWidth(), cellSize / 2 + cellSize, winPaint);
+            } else if (board.getWinPosition() == 5) {
+                canvas.drawLine(0, cellSize / 2 + cellSize * 2, getWidth(), cellSize / 2 + cellSize * 2, winPaint);
+            } else if (board.getWinPosition() == 6) {
+                canvas.drawLine(0, 0, getHeight() - distance, getHeight() - distance, winPaint);
+            } else if (board.getWinPosition() == 7) {
+                canvas.drawLine(0, getHeight() - distance, getWidth(), 0, winPaint);
             }
         }
     }
