@@ -22,12 +22,10 @@ public class Board {
     public boolean makeMoveAndroid() {
         if (nextPlayer == -1) {
             for (int i = 0; i < board.length; i++) {
-                for (int j = 0; j < board.length; j++) {
-                    if (board[i][j] == 0) {
-                        board[i][j] = -1;
-                        nextPlayer = 1;
-                        return true;
-                    }
+                if (board[i] == 0) {
+                    board[i] = -1;
+                    nextPlayer = 1;
+                    return true;
                 }
             }
         }
