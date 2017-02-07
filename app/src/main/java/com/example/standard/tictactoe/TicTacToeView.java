@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class TicTacToeView extends View {
+    private Board board;
     private Paint linePaint;
     private int cellSize, distance;
 
@@ -15,6 +16,8 @@ public class TicTacToeView extends View {
         super(context);
 
         setBackgroundResource(R.drawable.background);
+
+        board = Board.getInstance();
 
         linePaint = new Paint();
         linePaint.setColor(Color.RED);
