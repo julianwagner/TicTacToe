@@ -34,6 +34,15 @@ public class Board {
         return false;
     }
 
+    public int gameOver() {
+        if (hasWon(1)) {
+            return 1;
+        } else if (hasWon(-1)) {
+            return -1;
+        }
+        return 0;
+    }
+
     public static Board getInstance() {
         if (Board.instance == null) {
             Board.instance = new Board();
