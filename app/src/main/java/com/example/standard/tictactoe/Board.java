@@ -10,9 +10,9 @@ public class Board {
         this.board = new int[9];
     }
 
-    public boolean makeMove(int x, int y) {
-        if (nextPlayer == 1 && board[x][y] == 0) {
-            board[x][y] = 1;
+    public boolean makeMove(int position) {
+        if (nextPlayer == 1 && board[position] == 0) {
+            board[position] = 1;
             nextPlayer = -1;
             return true;
         }
