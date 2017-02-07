@@ -2,7 +2,7 @@ package com.example.standard.tictactoe;
 
 import java.util.Stack;
 
-public class Board {
+class Board {
     private static Board instance;
     private int[] board;
     private int nextPlayer, winPosition;
@@ -14,7 +14,7 @@ public class Board {
         history = new Stack<>();
     }
 
-    public boolean makeMove(int position) {
+    boolean makeMove(int position) {
         if (position == -1) {
             return false;
         }
@@ -32,14 +32,14 @@ public class Board {
         return false;
     }
 
-    public void undoMove() {
+    void undoMove() {
         if (!history.isEmpty()) {
             board[history.pop()] = 0;
             nextPlayer *= -1;
         }
     }
 
-    public int gameOver() {
+    int gameOver() {
         if (hasWon(1)) {
             return 1;
         } else if (hasWon(-1)) {
@@ -72,22 +72,22 @@ public class Board {
         return false;
     }
 
-    public static Board getInstance() {
+    static Board getInstance() {
         if (Board.instance == null) {
             Board.instance = new Board();
         }
         return Board.instance;
     }
 
-    public int getStatus(int position) {
+    int getStatus(int position) {
         return board[position];
     }
 
-    public int getWinPosition() {
+    int getWinPosition() {
         return winPosition;
     }
 
-    public void setNextPlayer(boolean playerStarts) {
+    void setNextPlayer(boolean playerStarts) {
         if (playerStarts) {
             nextPlayer = 1;
         } else {

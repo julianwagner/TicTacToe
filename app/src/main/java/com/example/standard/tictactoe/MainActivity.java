@@ -3,7 +3,6 @@ package com.example.standard.tictactoe;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -20,9 +19,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayout0);
         layout.addView(ticTacToeView);
 
-        ((Button) findViewById(R.id.buttonUndo)).setOnClickListener(this);
-        ((Button) findViewById(R.id.buttonAndroid)).setOnClickListener(this);
-        ((Button) findViewById(R.id.buttonPlayer)).setOnClickListener(this);
+        (findViewById(R.id.buttonUndo)).setOnClickListener(this);
+        (findViewById(R.id.buttonAndroid)).setOnClickListener(this);
+        (findViewById(R.id.buttonPlayer)).setOnClickListener(this);
     }
 
     @Override
