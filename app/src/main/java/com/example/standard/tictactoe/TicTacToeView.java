@@ -128,4 +128,9 @@ public class TicTacToeView extends View {
         }
         invalidate();
     }
+
+    public void undoMove() {
+        board.undoMove();
+        invalidate();
+    }
 }
