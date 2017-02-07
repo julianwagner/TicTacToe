@@ -45,4 +45,24 @@ public class MoveGenerator {
         }
         return maxValue;
     }
+
+    private int min(int player, int depth) {
+        if (board.gameOver() == player * -1) {
+            return 1;
+        } else if (board.gameOver() == player) {
+            return -1;
+        } else if (depth == 0) {
+            return 0;
+        }
+        int minValue = Integer.MAX_VALUE;
+        for (int i = 0; i < 9; i++) {
+            board.makeMove(i, player);
+            int value = min(player * -1, depth - 1);
+            board.undoMove();
+            if (value < minValue) {
+                minValue = value;
+            }
+        }
+        return minValue;
+    }
 }
