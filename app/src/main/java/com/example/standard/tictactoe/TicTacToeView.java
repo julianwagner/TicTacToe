@@ -53,17 +53,25 @@ public class TicTacToeView extends View {
             canvas.drawLine(width * i, 0, width * i, getHeight() - distance, linePaint);
         }
         //draw moves
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                int xPosition = (cellSize / 2) + (cellSize * i);
-                int yPosition = (cellSize / 2) + (cellSize * j);
-                if (board.getStatus(i, j) == 1) {
-                    int iconSize = playerIcon.getWidth() / 2;
-                    canvas.drawBitmap(playerIcon, xPosition - iconSize, yPosition - iconSize, iconPaint);
-                } else if (board.getStatus(i, j) == -1) {
-                    int iconSize = androidIcon.getWidth() / 2;
-                    canvas.drawBitmap(androidIcon, xPosition - iconSize, yPosition - iconSize, iconPaint);
-                }
+        for (int i = 0; i < 9; i++) {
+            int xPosition = cellSize / 2;
+            int yPosition = cellSize / 2;
+            if (i % 3 == 1) {
+                xPosition += cellSize;
+            } else if (i % 3 == 2) {
+                xPosition += cellSize * 2;
+            }
+            if (i >= 6) {
+                yPosition += cellSize * 2;
+            } else if (i >= 3) {
+                yPosition += cellSize;
+            }
+            if (board.getStatus(i) == 1) {
+                int iconSize = playerIcon.getWidth() / 2;
+                canvas.drawBitmap(playerIcon, xPosition - iconSize, yPosition - iconSize, iconPaint);
+            } else if (board.getStatus(i) == -1) {
+                int iconSize = androidIcon.getWidth() / 2;
+                canvas.drawBitmap(androidIcon, xPosition - iconSize, yPosition - iconSize, iconPaint);
             }
         }
         //winning line
@@ -91,18 +99,17 @@ public class TicTacToeView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            int xCell = (int) (event.getX() / cellSize);
-            int yCell = (int) (event.getY());
-            if (yCell <= cellSize) {
-                yCell = 0;
-            } else if (yCell <= cellSize * 2) {
-                yCell = 1;
-            } else if (yCell <= cellSize * 3) {
-                yCell = 2;
+            int position = (int) (event.getY());
+            if (position <= cellSize) {
+                position = (int) (event.getX() / cellSize);
+            } else if (position <= cellSize * 2) {
+                position = 3 + (int) (event.getX() / cellSize);
+            } else if (position <= cellSize * 3) {
+                position = 6 + (int) (event.getX() / cellSize);
             } else {
                 return true;
             }
-            if (board.gameOver() == 0 && board.makeMove(xCell, yCell)) {
+            if (board.gameOver() == 0 && board.makeMove(position)) {
                 invalidate();
             }
             if (board.gameOver() == 0 && board.makeMoveAndroid()) {
