@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class TicTacToeView extends View {
     private Board board;
     private Paint linePaint, iconPaint, winPaint;
-    private int cellSize, distance;
+    private int cellSize;
     private Bitmap androidIcon, playerIcon;
 
     public TicTacToeView(Context context) {
@@ -43,7 +43,7 @@ public class TicTacToeView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        distance = canvas.getHeight() - canvas.getWidth();
+        final int distance = canvas.getHeight() - canvas.getWidth();
         final int width = canvas.getWidth() / 3;
         final int height = (canvas.getHeight() - distance) / 3;
         cellSize = width;
