@@ -6,7 +6,6 @@ public class Board {
     private int nextPlayer;
 
     private Board() {
-        board = new int[3][3];
         nextPlayer = 0;
     }
 
@@ -46,5 +45,6 @@ public class Board {
 
     public void setNextPlayer(int nextPlayer) {
         this.nextPlayer = nextPlayer;
+        this.board = new int[3][3];
     }
 }
