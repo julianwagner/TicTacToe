@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonQuit:
-                finish();
+                ticTacToeView.undoMove();
                 break;
             case R.id.buttonAndroid:
                 ticTacToeView.startWithPlayer(false);
