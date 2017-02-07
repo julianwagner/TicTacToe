@@ -40,6 +40,10 @@ public class Board {
         return Board.instance;
     }
 
+    public int getStatus(int x, int y) {
+        return board[x][y];
+    }
+
     public void setNextPlayer(int nextPlayer) {
         this.nextPlayer = nextPlayer;
     }
