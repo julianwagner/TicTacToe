@@ -14,6 +14,7 @@ public class TicTacToeView extends View {
     private Paint linePaint, iconPaint, winPaint;
     private int cellSize;
     private Bitmap androidIcon, playerIcon;
+    private MoveGenerator moveGenerator;
 
     public TicTacToeView(Context context) {
         super(context);
@@ -24,6 +25,7 @@ public class TicTacToeView extends View {
         playerIcon = BitmapFactory.decodeResource(getResources(), R.drawable.player_icon);
 
         board = Board.getInstance();
+        moveGenerator = MoveGenerator.getInstance();
 
         iconPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
@@ -108,10 +110,10 @@ public class TicTacToeView extends View {
             } else {
                 return true;
             }
-            if (board.gameOver() == 0 && board.makeMove(position, 1)) {
+            if (board.gameOver() == 0 && board.makeMove(position)) {
                 invalidate();
             }
-            if (board.gameOver() == 0 && board.makeMove(0, -1)) {
+            if (board.gameOver() == 0 && board.makeMove(moveGenerator.calculateMove())) {
                 invalidate();
             }
             return true;
@@ -120,11 +122,9 @@ public class TicTacToeView extends View {
     }
 
     public void startWithPlayer(boolean playerStarts) {
-        if (playerStarts) {
-            board.setNextPlayer(playerStarts);
-        } else {
-            board.setNextPlayer(playerStarts);
-            board.makeMove(0, -1);
+        board.setNextPlayer(playerStarts);
+        if (!playerStarts) {
+            board.makeMove(moveGenerator.calculateMove());
         }
         invalidate();
     }
