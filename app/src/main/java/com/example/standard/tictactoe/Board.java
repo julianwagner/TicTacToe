@@ -43,22 +43,22 @@ public class Board {
 
     private boolean hasWon(int player) {
         for (int i = 0; i < 3; i++) {
-            if (board[i][0] == player && board[i][1] == player && board[i][2] == player) {
+            if (board[i] == player && board[i + 3] == player && board[i + 6] == player) {
                 winPosition = i;
                 return true;
             }
         }
-        for (int i = 0; i < 3; i++) {
-            if (board[0][i] == player && board[1][i] == player && board[2][i] == player) {
+        for (int i = 0; i < 3; i += 3) {
+            if (board[i] == player && board[i + 1] == player && board[i + 2] == player) {
                 winPosition = i + 3;
                 return true;
             }
         }
-        if (board[0][0] == player && board[1][1] == player && board[2][2] == player) {
+        if (board[0] == player && board[4] == player && board[8] == player) {
             winPosition = 6;
             return true;
         }
-        if (board[0][2] == player && board[1][1] == player && board[2][0] == player) {
+        if (board[2] == player && board[4] == player && board[6] == player) {
             winPosition = 7;
             return true;
         }
