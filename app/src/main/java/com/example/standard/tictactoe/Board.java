@@ -74,8 +74,8 @@ public class Board {
         return Board.instance;
     }
 
-    public int getStatus(int x, int y) {
-        return board[x][y];
+    public int getStatus(int position) {
+        return board[position];
     }
 
     public int getWinPosition() {
