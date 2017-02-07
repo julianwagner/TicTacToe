@@ -9,6 +9,7 @@ import android.view.View;
 
 public class TicTacToeView extends View {
     private Paint linePaint;
+    private int cellSize, distance;
 
     public TicTacToeView(Context context) {
         super(context);
@@ -25,9 +26,10 @@ public class TicTacToeView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        final int distance = canvas.getHeight() - canvas.getWidth();
+        distance = canvas.getHeight() - canvas.getWidth();
         final int width = canvas.getWidth() / 3;
         final int height = (canvas.getHeight() - distance) / 3;
+        cellSize = width;
 
         for (int i = 1; i <= 2; i++) {
             canvas.drawLine(0, height * i, getWidth(), height * i, linePaint);
