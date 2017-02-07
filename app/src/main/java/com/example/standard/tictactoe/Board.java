@@ -7,26 +7,26 @@ public class Board {
     private int[] board;
     private int nextPlayer, winPosition;
     private Stack<Integer> history;
-    private MoveGenerator moveGenerator;
 
     private Board() {
         nextPlayer = 0;
         this.board = new int[9];
         history = new Stack<>();
-        moveGenerator = MoveGenerator.getInstance();
     }
 
-    public boolean makeMove(int position, int player) {
-        if (nextPlayer == player && board[position] == 0) {
-            board[position] = player;
-            nextPlayer = player * -1;
+    public boolean makeMove(int position) {
+        if (position == -1) {
+            return false;
+        }
+        if (nextPlayer == 1 && board[position] == 0) {
+            board[position] = 1;
+            nextPlayer = -1;
             history.push(position);
             return true;
-        } else if (nextPlayer == player && board[position] == 0) {
-            int move = moveGenerator.calculateMove(this, 9 - history.size());
-            board[move] = player;
-            nextPlayer = player * -1;
-            history.push(move);
+        } else if (nextPlayer == -1) {
+            board[position] = -1;
+            nextPlayer = 1;
+            history.push(position);
             return true;
         }
         return false;
