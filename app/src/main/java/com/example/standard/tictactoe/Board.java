@@ -2,12 +2,12 @@ package com.example.standard.tictactoe;
 
 public class Board {
     private static Board instance;
-    private int[][] board;
+    private int[] board;
     private int nextPlayer, winPosition;
 
     private Board() {
         nextPlayer = 0;
-        this.board = new int[3][3];
+        this.board = new int[9];
     }
 
     public boolean makeMove(int x, int y) {
@@ -84,6 +84,6 @@ public class Board {
 
     public void setNextPlayer(int nextPlayer) {
         this.nextPlayer = nextPlayer;
-        this.board = new int[3][3];
+        this.board = new int[9];
     }
 }
