@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class TicTacToeView extends View {
     private Board board;
-    private Paint linePaint, iconPaint;
+    private Paint linePaint, iconPaint, winPaint;
     private int cellSize, distance;
     private Bitmap androidIcon, playerIcon;
 
@@ -32,6 +32,11 @@ public class TicTacToeView extends View {
         linePaint.setColor(Color.RED);
         linePaint.setStrokeWidth(5);
         linePaint.setStyle(Paint.Style.STROKE);
+
+        winPaint = new Paint();
+        winPaint.setColor(Color.YELLOW);
+        winPaint.setStrokeWidth(5);
+        winPaint.setStyle(Paint.Style.STROKE);
     }
 
     @Override
