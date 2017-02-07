@@ -1,19 +1,24 @@
 package com.example.standard.tictactoe;
 
+import java.util.Stack;
+
 public class Board {
     private static Board instance;
     private int[] board;
     private int nextPlayer, winPosition;
+    private Stack<Integer> history;
 
     private Board() {
         nextPlayer = 0;
         this.board = new int[9];
+        history = new Stack<>();
     }
 
     public boolean makeMove(int position) {
         if (nextPlayer == 1 && board[position] == 0) {
             board[position] = 1;
             nextPlayer = -1;
+            history.push(position);
             return true;
         }
         return false;
@@ -25,6 +30,7 @@ public class Board {
                 if (board[i] == 0) {
                     board[i] = -1;
                     nextPlayer = 1;
+                    history.push(i);
                     return true;
                 }
             }
