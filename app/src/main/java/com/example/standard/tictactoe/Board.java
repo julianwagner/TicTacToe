@@ -7,6 +7,7 @@ public class Board {
 
     private Board() {
         nextPlayer = 0;
+        this.board = new int[3][3];
     }
 
     public boolean makeMove(int x, int y) {
