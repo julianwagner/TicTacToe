@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 public class TicTacToeView extends View {
     private Board board;
@@ -76,11 +77,17 @@ public class TicTacToeView extends View {
             } else {
                 return true;
             }
-            if (board.makeMove(xCell, yCell)) {
+            if (board.gameOver() == 0 && board.makeMove(xCell, yCell)) {
                 invalidate();
             }
-            if (board.makeMoveAndroid()) {
+            if (board.gameOver() == 0 && board.makeMoveAndroid()) {
                 invalidate();
+            }
+            int gameOver = board.gameOver();
+            if (gameOver == 1) {
+                Toast.makeText(getContext(), "Player wins!", Toast.LENGTH_SHORT).show();
+            } else if (gameOver == -1) {
+                Toast.makeText(getContext(), "Android wins!", Toast.LENGTH_SHORT).show();
             }
             return true;
         }
