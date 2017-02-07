@@ -24,10 +24,10 @@
             android:text="@string/androidStarts"></Button>
 
         <Button
-            android:id="@+id/buttonQuit"
+            android:id="@+id/buttonUndo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/quit"></Button>
+            android:text="@string/undo"></Button>
     </LinearLayout>
 </LinearLayout>

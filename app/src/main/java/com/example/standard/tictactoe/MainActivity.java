@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayout0);
         layout.addView(ticTacToeView);
 
-        ((Button) findViewById(R.id.buttonQuit)).setOnClickListener(this);
+        ((Button) findViewById(R.id.buttonUndo)).setOnClickListener(this);
         ((Button) findViewById(R.id.buttonAndroid)).setOnClickListener(this);
         ((Button) findViewById(R.id.buttonPlayer)).setOnClickListener(this);
     }
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.buttonQuit:
+            case R.id.buttonUndo:
                 ticTacToeView.undoMove();
                 break;
             case R.id.buttonAndroid:
