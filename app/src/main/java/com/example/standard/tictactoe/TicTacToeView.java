@@ -1,6 +1,8 @@
 package com.example.standard.tictactoe;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -11,11 +13,15 @@ public class TicTacToeView extends View {
     private Board board;
     private Paint linePaint;
     private int cellSize, distance;
+    private Bitmap androidIcon, playerIcon;
 
     public TicTacToeView(Context context) {
         super(context);
 
         setBackgroundResource(R.drawable.background);
+
+        androidIcon = BitmapFactory.decodeResource(getResources(), R.drawable.android_icon);
+        playerIcon = BitmapFactory.decodeResource(getResources(), R.drawable.player_icon);
 
         board = Board.getInstance();
 
