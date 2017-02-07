@@ -3,7 +3,7 @@ package com.example.standard.tictactoe;
 public class Board {
     private static Board instance;
     private int[][] board;
-    private int nextPlayer;
+    private int nextPlayer, winPosition;
 
     private Board() {
         nextPlayer = 0;
@@ -46,18 +46,25 @@ public class Board {
     private boolean hasWon(int player) {
         for (int i = 0; i < 3; i++) {
             if (board[i][0] == player && board[i][1] == player && board[i][2] == player) {
+                winPosition = i;
                 return true;
             }
         }
         for (int i = 0; i < 3; i++) {
             if (board[0][i] == player && board[1][i] == player && board[2][i] == player) {
+                winPosition = i + 3;
                 return true;
             }
         }
         if (board[0][0] == player && board[1][1] == player && board[2][2] == player) {
+            winPosition = 6;
             return true;
         }
-        return (board[0][2] == player && board[1][1] == player && board[2][0] == player);
+        if (board[0][2] == player && board[1][1] == player && board[2][0] == player) {
+            winPosition = 7;
+            return true;
+        }
+        return false;
     }
 
     public static Board getInstance() {
@@ -69,6 +76,10 @@ public class Board {
 
     public int getStatus(int x, int y) {
         return board[x][y];
+    }
+
+    public int getWinPosition() {
+        return winPosition;
     }
 
     public void setNextPlayer(int nextPlayer) {
