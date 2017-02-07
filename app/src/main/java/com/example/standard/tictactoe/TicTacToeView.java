@@ -52,9 +52,11 @@ public class TicTacToeView extends View {
                 int xPosition = (cellSize / 2) + (cellSize * i);
                 int yPosition = (cellSize / 2) + (cellSize * j);
                 if (board.getStatus(i, j) == 1) {
-                    canvas.drawBitmap(playerIcon, xPosition, yPosition, iconPaint);
+                    int iconSize = playerIcon.getWidth() / 2;
+                    canvas.drawBitmap(playerIcon, xPosition - iconSize, yPosition - iconSize, iconPaint);
                 } else if (board.getStatus(i, j) == -1) {
-                    canvas.drawBitmap(androidIcon, xPosition, yPosition, iconPaint);
+                    int iconSize = androidIcon.getWidth() / 2;
+                    canvas.drawBitmap(androidIcon, xPosition - iconSize, yPosition - iconSize, iconPaint);
                 }
             }
         }
