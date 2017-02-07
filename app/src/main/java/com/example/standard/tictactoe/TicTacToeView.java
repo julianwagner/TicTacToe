@@ -41,10 +41,22 @@ public class TicTacToeView extends View {
         final int width = canvas.getWidth() / 3;
         final int height = (canvas.getHeight() - distance) / 3;
         cellSize = width;
-
+        //draw board
         for (int i = 1; i <= 2; i++) {
             canvas.drawLine(0, height * i, getWidth(), height * i, linePaint);
             canvas.drawLine(width * i, 0, width * i, getHeight() - distance, linePaint);
+        }
+        //draw moves
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                int xPosition = (cellSize / 2) + (cellSize * i);
+                int yPosition = (cellSize / 2) + (cellSize * j);
+                if (board.getStatus(i, j) == 1) {
+                    canvas.drawBitmap(playerIcon, xPosition, yPosition, iconPaint);
+                } else if (board.getStatus(i, j) == -1) {
+                    canvas.drawBitmap(androidIcon, xPosition, yPosition, iconPaint);
+                }
+            }
         }
     }
 
@@ -66,7 +78,7 @@ public class TicTacToeView extends View {
             }
             if (board.makeMoveAndroid()) {
             }
-
+            invalidate();
             return true;
         }
         return super.onTouchEvent(event);
@@ -78,5 +90,6 @@ public class TicTacToeView extends View {
         } else {
             board.setNextPlayer(-1);
         }
+        invalidate();
     }
 }
