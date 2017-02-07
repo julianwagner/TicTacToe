@@ -108,10 +108,10 @@ public class TicTacToeView extends View {
             } else {
                 return true;
             }
-            if (board.gameOver() == 0 && board.makeMove(position)) {
+            if (board.gameOver() == 0 && board.makeMove(position, 1)) {
                 invalidate();
             }
-            if (board.gameOver() == 0 && board.makeMoveAndroid()) {
+            if (board.gameOver() == 0 && board.makeMove(0, -1)) {
                 invalidate();
             }
             return true;
@@ -124,7 +124,7 @@ public class TicTacToeView extends View {
             board.setNextPlayer(playerStarts);
         } else {
             board.setNextPlayer(playerStarts);
-            board.makeMoveAndroid();
+            board.makeMove(0, -1);
         }
         invalidate();
     }
