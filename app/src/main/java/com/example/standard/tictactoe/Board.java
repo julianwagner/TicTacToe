@@ -24,6 +24,7 @@ public class Board {
                 for (int j = 0; j < board.length; j++) {
                     if (board[i][j] == 0) {
                         board[i][j] = -1;
+                        nextPlayer = 1;
                         return true;
                     }
                 }
