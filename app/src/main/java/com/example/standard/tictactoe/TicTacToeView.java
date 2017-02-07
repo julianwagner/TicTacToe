@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class TicTacToeView extends View {
@@ -32,5 +33,10 @@ public class TicTacToeView extends View {
             canvas.drawLine(0, height * i, getWidth(), height * i, linePaint);
             canvas.drawLine(width * i, 0, width * i, getHeight() - distance, linePaint);
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
     }
 }
