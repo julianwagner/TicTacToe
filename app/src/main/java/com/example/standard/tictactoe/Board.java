@@ -38,6 +38,13 @@ public class Board {
         return false;
     }
 
+    public void undoMove() {
+        if (!history.isEmpty()) {
+            board[history.pop()] = 0;
+            nextPlayer *= -1;
+        }
+    }
+
     public int gameOver() {
         if (hasWon(1)) {
             return 1;
