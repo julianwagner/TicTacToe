@@ -7,11 +7,13 @@ public class Board {
     private int[] board;
     private int nextPlayer, winPosition;
     private Stack<Integer> history;
+    private MoveGenerator moveGenerator;
 
     private Board() {
         nextPlayer = 0;
         this.board = new int[9];
         history = new Stack<>();
+        moveGenerator = MoveGenerator.getInstance();
     }
 
     public boolean makeMove(int position, int player) {
@@ -21,7 +23,7 @@ public class Board {
             history.push(position);
             return true;
         } else if (nextPlayer == player && board[position] == 0) {
-            int move = moveGenerator.calculateMove();
+            int move = moveGenerator.calculateMove(this, 9 - history.size());
             board[move] = player;
             nextPlayer = player * -1;
             history.push(move);
