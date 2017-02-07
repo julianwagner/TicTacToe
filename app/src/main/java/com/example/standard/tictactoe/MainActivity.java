@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TicTacToeView ticTacToeView;
@@ -31,10 +32,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.buttonAndroid:
-                ticTacToeView.startGame(false);
+                ticTacToeView.startWithPlayer(false);
+                Toast.makeText(this, "Android starts", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.buttonPlayer:
-                ticTacToeView.startGame(true);
+                ticTacToeView.startWithPlayer(true);
+                Toast.makeText(this, "Player starts", Toast.LENGTH_SHORT);
                 break;
             default:
         }
