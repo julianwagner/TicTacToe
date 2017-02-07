@@ -14,26 +14,18 @@ public class Board {
         history = new Stack<>();
     }
 
-    public boolean makeMove(int position) {
-        if (nextPlayer == 1 && board[position] == 0) {
-            board[position] = 1;
-            nextPlayer = -1;
+    public boolean makeMove(int position, int player) {
+        if (nextPlayer == player && board[position] == 0) {
+            board[position] = player;
+            nextPlayer = player * -1;
             history.push(position);
             return true;
-        }
-        return false;
-    }
-
-    public boolean makeMoveAndroid() {
-        if (nextPlayer == -1) {
-            for (int i = 0; i < board.length; i++) {
-                if (board[i] == 0) {
-                    board[i] = -1;
-                    nextPlayer = 1;
-                    history.push(i);
-                    return true;
-                }
-            }
+        } else if (nextPlayer == player && board[position] == 0) {
+            int move = moveGenerator.calculateMove();
+            board[move] = player;
+            nextPlayer = player * -1;
+            history.push(move);
+            return true;
         }
         return false;
     }
