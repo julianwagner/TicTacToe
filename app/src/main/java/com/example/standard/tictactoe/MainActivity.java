@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.buttonPlayer:
                 ticTacToeView.startWithPlayer(true);
-                Toast.makeText(this, "Player starts", Toast.LENGTH_SHORT);
+                Toast.makeText(this, "Player starts", Toast.LENGTH_SHORT).show();
                 break;
             default:
         }
