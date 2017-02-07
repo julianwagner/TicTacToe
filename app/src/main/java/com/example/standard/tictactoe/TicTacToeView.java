@@ -77,10 +77,11 @@ public class TicTacToeView extends View {
                 return true;
             }
             if (board.makeMove(xCell, yCell)) {
+                invalidate();
             }
             if (board.makeMoveAndroid()) {
+                invalidate();
             }
-            invalidate();
             return true;
         }
         return super.onTouchEvent(event);
