@@ -99,6 +99,7 @@ public class TicTacToeView extends View {
             board.setNextPlayer(1);
         } else {
             board.setNextPlayer(-1);
+            board.makeMoveAndroid();
         }
         invalidate();
     }
